@@ -41,6 +41,7 @@
   #include <sys/time.h>
 #endif
 
+#define NOCRYPT
 typedef	int				ch_ret;
 typedef	int				obj_ret;
 
@@ -721,6 +722,7 @@ struct	descriptor_data
     sh_int		idle;
     sh_int		lines;
     sh_int		scrlen;
+    sh_int  mxp;
     bool		fcommand;
     char		inbuf		[MAX_INBUF_SIZE];
     char		incomm		[MAX_INPUT_LENGTH];
@@ -4486,7 +4488,7 @@ char *  num_punct	args( ( int foo ) );
 char *	format_obj_to_char	args( ( OBJ_DATA *obj, CHAR_DATA *ch,
 				    bool fShort ) );
 void	show_list_to_char	args( ( OBJ_DATA *list, CHAR_DATA *ch,
-				    bool fShort, bool fShowNothing ) );
+				    bool fShort, bool fShowNothing, const int iDefaultAction  ) );
 bool	is_ignoring	args( (CHAR_DATA *ch, CHAR_DATA *ign_ch) );
 void	show_race_line	args( ( CHAR_DATA *ch, CHAR_DATA *victim ) );
 
@@ -5375,6 +5377,54 @@ do									\
 	
 #define LV_TOGGLE_BIT(vector, index)					\
 	(*(vector + index/CHAR_SIZE) ^= (1 << index%CHAR_SIZE))
+
+
+/* mxp stuff - added by Nick Gammon - 18 June 2001 */
+
+/*
+To simply using MXP we'll use special tags where we want to use MXP tags
+and then change them to <, > and & at the last moment.
+
+  eg. MXP_BEG "send" MXP_END    becomes: <send>
+      MXP_AMP "version;"        becomes: &version;
+
+*/
+
+/* strings */
+#define MXP_BEG "\x03"    /* becomes < */
+#define MXP_END "\x04"    /* becomes > */
+#define MXP_AMP "\x05"    /* becomes & */
+
+/* characters */
+#define MXP_BEGc '\x03'    /* becomes < */
+#define MXP_ENDc '\x04'    /* becomes > */
+#define MXP_AMPc '\x05'    /* becomes & */
+
+// constructs an MXP tag with < and > around it
+#define MXPTAG(arg) MXP_BEG arg MXP_END
+
+#define ESC "\x1B"  /* esc character */
+
+#define MXPMODE(arg) ESC "[" #arg "z"
+
+/* flags for show_list_to_char */
+
+enum {
+  eItemNothing,   /* item is not readily accessible */
+  eItemGet,     /* item on ground */
+  eItemDrop,    /* item in inventory */
+  eItemBid     /* auction item */
+  };
+
+#define MXP_open 0   /* only MXP commands in the "open" category are allowed.  */
+#define MXP_secure 1 /* all tags and commands in MXP are allowed within the line.  */
+#define MXP_locked 2 /* no MXP or HTML commands are allowed in the line.  The line is not parsed for any tags at all.   */
+#define MXP_reset 3  /* close all open tags */
+#define MXP_secure_once 4  /* next tag is secure only */
+#define MXP_perm_open 5   /* open mode until mode change  */
+#define MXP_perm_secure 6 /* secure mode until mode change */
+#define MXP_perm_locked 7 /* locked mode until mode change */
+
 	
 #ifdef WIN32
 void gettimeofday(struct timeval *tv, struct timezone *tz);

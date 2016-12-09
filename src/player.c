@@ -1395,7 +1395,7 @@ void do_inventory( CHAR_DATA *ch, char *argument )
 {
     set_char_color( AT_RED, ch );
     send_to_char( "You are carrying:\n\r", ch );
-    show_list_to_char( ch->first_carrying, ch, TRUE, TRUE );
+    show_list_to_char( ch->first_carrying, ch, TRUE, TRUE, eItemDrop );
     return;
 }
 

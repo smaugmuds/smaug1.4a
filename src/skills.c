@@ -59,7 +59,7 @@ char * const target_type[] =
 
 void show_char_to_char( CHAR_DATA *list, CHAR_DATA *ch );
 void show_list_to_char( OBJ_DATA *list, CHAR_DATA *ch, bool fShort, 
-	bool fShowN );
+	bool fShowN,  const int iDefaultAction );
 
 int ris_save( CHAR_DATA *ch, int chance, int ris );
 bool check_illegal_psteal( CHAR_DATA *ch, CHAR_DATA *victim );
@@ -4523,7 +4523,7 @@ void do_scan( CHAR_DATA *ch, char *argument )
 	set_char_color( AT_RMNAME, ch );
 	send_to_char( ch->in_room->name, ch );
 	send_to_char( "\n\r", ch );
-	show_list_to_char( ch->in_room->first_content, ch, FALSE, FALSE );
+	show_list_to_char( ch->in_room->first_content, ch, FALSE, FALSE, eItemNothing );
 	show_char_to_char( ch->in_room->first_person, ch );
 
 	switch( ch->in_room->sector_type )

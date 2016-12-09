@@ -1,2 +1,2 @@
-# smaug1.4a
-SMAUG 1.4a
+# smaug1.4mxp
+SMAUG 1.4 with MXP

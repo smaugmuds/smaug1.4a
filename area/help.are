@@ -4864,9 +4864,9 @@ resides in a chamber which prevents the usage of magic...
      /_______  |      |  |______|  |      |  |            *    ).:.(    *
             /  |      |  |      |  |      |  |            *    {o o}    *
            /   |      |  |      |  |      |  |     __     *   / ' ' \   *
-          /    |      |  |      |  |      |  |       |    *-'^^.VxvxV.^^'-*
+          /    |      |  |      |  |      |  |       |    *-'^.VxvxV.^'-*
          /     |      |  |      |   \____/    \_____/     ***************
-        / 
+        /      ^^      ^^  ^^      ^^
 
 SMAUG 1.4 written by Thoric (Derek Snider) with Altrag, Blodkai, Haus, Narn,
 Scryn, Swordbearer, Tricops, Gorog, Rennard, Grishnakh, Fireblade and Nivek.
@@ -13834,23 +13834,66 @@ the actual skill and spell names.
 SLOOKUP ALL shows this information for all skills and spells.
 ~
 
--1 SMAUG THORIC~
-.                               [WWW.SMAUG.ORG]
-         /     _      _            _      _    _____
-        /      |\    /|     /\     |      |   /     \     ***************
-       /       | \  / |    /  \    |      |  |            *   \\._.//   *
-      /        |  \/  |   /    \   |      |  |            *   (0...0)   *
-     /_______  |      |  |______|  |      |  |            *    ).:.(    *
-            /  |      |  |      |  |      |  |            *    {o o}    *
-           /   |      |  |      |  |      |  |     __     *   / ' ' \   *
-          /    |      |  |      |  |      |  |       |    *-'^.VxvxV.^'-*
-         /     |      |  |      |   \____/    \_____/     ***************
-        /
-            [S]imulated [M]edieval multi-[U]ser [A]dventure [G]ame
+1 SMAUG~
+To create your first level 65 character -- the initial immortal -- for
+the current release of Smaug (which was released with name authorization
+activated), perform the following:
+ 
+  Using pico, joe, vi or some other text editor, load sysdata.dat and
+  change "Waitforauth    1" to "Waitforauth    0".  This will disable
+  the name authorization system, and characters will appear in the
+  academy and be advanced from level 1 to level 2.
+ 
+  Once you've made such a character and it is advanced to level 2, go
+  in to the corresponding player directory, load the pfile, and edit
+  its level to 65.
+ 
+You're now ready to log your level 65 in to your mud and proceed.
+To subscribe to the Smaug mail list, send mail to smaug-request@realms.game.org
+with subscribe in the subject of the text.
+For information on installing smaug, see Help Smaug1 and Help Smaug2.
+~
 
-SMAUG 1.4 is a Merc2.1 derivative written by Thoric (Derek Snider) with help
-from Altrag, Blodkai, Haus, Narn, Scryn, Swordbearer, Tricops, Gorog, Rennard,
-Grishnakh, Fireblade and Nivek.
+1 SMAUG1~
+To get SMAUG running under Windows 95, perform the following
+steps, in order.
+1.  Download the following files from ftp.game.org/pub/smaug
+    to C:\
+       SMAUG1.02.TGZ
+       SMAUGw32.ZIP OR SMAUGW32_1_02A.ZIP
+       Note: The two zip files are mutually exclusive. One
+       file has routines for CRYPTO.  See the index on the
+       ftp site for details.  Download only the latest
+       version of the programs.
+2.  Download an UNTGZ program and a copy of mIRC or identd from a
+    web site that has them. IF your uncompression program is able
+    to handle both zip and tgz files, this step may be unnecessary.
+3.  With SMAUG1.02.TGZ in your C:\ root directory, UNTGZ the file.
+    This will build the directories needed for SMAUG.
+See &Whelp smaug2 &w for Windows information
+ 
+~
+
+1 SMAUG2~
+.
+4.  Copy or move the smaug zip file into C:\DIST\SYSTEM and unzip
+    the file.
+5.  Copy C:\DIST\SYSTEM\cygwin.dll to C:\WINDOWS\SYSTEM
+6.  Copy the .ARE and .LST files into C:\DIST\SYSTEM
+7.  Run mIRC/identd software and minimize the window.  This handles
+    the addressing routines.  If it is not active, you may experience
+    alot of lag as the system attempts to resolve the addressing fo
+    the screen displays and responses.
+8.  Open a DOS window and set your memory configuration to place as
+    much of your memory into EXTENDED memory allocation as possible.
+ 
+9.  To run SMAUG, you can either:
+    a)  Open a DOS window, go to C:\DIST\SYSTEM and type SMAUG.
+    b)  In windows, go to C:\DIST and double click on the SMAUG.EXE
+        file.
+10.  Using a client, sign on to your new MUD using 127.0.0.1 port 4000.
+See HELP SMAUG to learn how to create your first immortal character.
+ 
 ~
 
 56 SMAUGSPELLS~

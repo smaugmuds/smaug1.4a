@@ -4252,3 +4252,4 @@ void do_slay( CHAR_DATA *ch, char *argument )
     raw_kill( ch, victim );
     return;
 }
+

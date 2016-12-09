@@ -1,7 +1,7 @@
 #SYSTEM
 MudName	     (Name Not Set)~
-Highplayers    0
-Highplayertime ~
+Highplayers    2
+Highplayertime Wed Dec  7 21:32:05 2016~
 CheckImmHost   1
 Nameresolving  1
 Waitforauth    0
@@ -42,6 +42,7 @@ BanClassLevel  61
 MorphOpt       1
 PetSave	     1
 IdentTries     20
+Pkloot	     1
 End
 
 #END

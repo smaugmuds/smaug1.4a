@@ -19,6 +19,7 @@
 #include <ctype.h>
 #include <stdio.h>
 #include <string.h>
+#define __retms__
 #include <time.h>
 #include "mud.h"
 #ifdef USE_IMC
